@@ -10,9 +10,14 @@
 - Source PR: https://github.com/THEROCKSSS/decomp-atlas/pull/1 (open; do not self-merge)
 
 ## Current state
-The full first version is implemented, locally verified, and deployed owner-private. Published Site source is commit 9031ace1c1df37a3626e21fdd5a070d8bc6a0612, following implementation commit 42884f1622cd94726e3f8b5edb649e962d8dc260. GitHub PR #1 is open from codex/initial-site into main, with its CI check successful. Delivery-record-only commits may follow the published source commit; they do not change the deployed HTML, CSS, JavaScript, or catalogue. GitHub is the confirmed tracker. The workspace's unrelated work was left intact.
+Owen rejected the first visual design and requested substantially different prototype styles. Three locally verified homepage concepts now live on prototype/decomp-atlas-styles, based on source branch commit 66d9891f6bec3ceddbd1e1c35f90e43501e7da05. The current task is to publish the comparison route and preserve it for Owen to choose a direction. No winner has been selected. The existing homepage and functional routes remain unchanged. The previous owner-private Site publication was source commit 9031ace1c1df37a3626e21fdd5a070d8bc6a0612. GitHub remains the sole contribution tracker.
 
 ## What was done
+- Current request: added `/prototypes/` with Library, Workbench, and Index concepts, URL-backed comparison controls, working search/filter, and an interactive illustrative unit map.
+- Added original imagegen house artwork, original SVG scenes, four self-hosted font families and their OFL notices, isolated prototype tokens/CSS/JS, and a two-line build hook.
+- Applied frontend design/orchestration, style exploration, craft, Hallmark, motion, imagegen, and prototype skills. Details and asset provenance are in docs/PROTOTYPES.md.
+- Mechanically reviewed prototype controls and base-site preservation; fixed mobile accessible style labels and unsupported query filters. Reviewed screenshots on desktop, tablet, and phones.
+- The session-retrospective request was explicitly declined; do not ask again for this completed build.
 - Confirmed first-version scope and GitHub choice with Owen.
 - Created the public GitHub repository with an initial README.
 - Registered the owner-private Decomp Atlas Site and persisted its identity in .openai/hosting.json.
@@ -31,6 +36,7 @@ The full first version is implemented, locally verified, and deployed owner-priv
 - Added README, CONTRIBUTING.md, MIT license for original Atlas work, and docs/VERIFICATION.md.
 
 ## What's not done
+- Prototype publication and its review PR are pending. Choosing a direction belongs to Owen; do not turn a prototype into the permanent site without that choice.
 - The source PR remains unmerged for Owen. Until merged, the default GitHub branch contains only the bootstrap README; full contribution templates and source are on the PR branch.
 - Site audience remains private; public visitor access has not been requested.
 - Task claims, hosted builds, progress uploads, and a live metrics feed are outside the agreed first version.
@@ -40,6 +46,7 @@ From this project directory:
 1. Run `npm run build` then `npm run check`.
 2. Run `npm run dev` and open http://127.0.0.1:8798.
 3. Review the existing PR and docs/SPEC.md; keep its scope and accepted tracker choice.
+   For the new style work, use http://127.0.0.1:8798/prototypes/?variant=library and docs/PROTOTYPES.md; the comparison bar also exposes Workbench and Index.
 4. For website edits, rebuild and publish through the Sites workflow with the existing project_id, never a new Site registration. On Windows the packaged shell wrapper needs path handling; call the installed official prepare-site-build.cjs into a verified project-local stage, then native tar if the wrapper fails. Keep temporary source tokens on stdin only.
 
 ## Credentials / config
@@ -60,3 +67,11 @@ From this project directory:
 - [x] Implement the complete static slice.
 - [x] Exercise and visually review all main journeys.
 - [x] Review, open PR, publish privately, and verify returned deployment state.
+
+## Current prototype checklist
+- [x] Inspect the existing site and relevant design skills.
+- [x] Build three distinct visual structures and comparison controls.
+- [x] Exercise controls and review desktop/mobile rendering.
+- [ ] Capture the prototype branch and open its review PR.
+- [ ] Publish the comparison route privately and remove unused artifacts.
+- [ ] Owen chooses a direction; integrate it only after that choice.
