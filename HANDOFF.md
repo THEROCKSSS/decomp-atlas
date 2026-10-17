@@ -9,9 +9,10 @@
 - Site: https://decomp-atlas.richlotus16.chatgpt.site — owner-private, deployment succeeded
 - Source PR: https://github.com/THEROCKSSS/decomp-atlas/pull/1 (open; do not self-merge)
 - Prototype review PR: https://github.com/THEROCKSSS/decomp-atlas/pull/2 (draft, based on codex/initial-site; do not merge)
+- Compare styles: https://decomp-atlas.richlotus16.chatgpt.site/prototypes/?variant=library — owner-private
 
 ## Current state
-Owen rejected the first visual design and requested substantially different prototype styles. Three locally verified homepage concepts are committed as 8e185a1 and pushed on prototype/decomp-atlas-styles, based on source branch commit 66d9891f6bec3ceddbd1e1c35f90e43501e7da05. Draft PR #2 was read back with the correct base and head. Private publication of the comparison route is next. No winner has been selected. The existing homepage and functional routes remain unchanged. The previous owner-private Site publication was source commit 9031ace1c1df37a3626e21fdd5a070d8bc6a0612. GitHub remains the sole contribution tracker.
+Owen rejected the first visual design and requested substantially different prototype styles. Three verified homepage concepts are captured on prototype/decomp-atlas-styles and deployed owner-private at `/prototypes/`. Published Site source is fa5040f563ffdf2a6ab726c88e04e29eff2ccf55; the prototype implementation is 8e185a1. Draft PR #2 was read back with the correct base and head and its CI check passed. Delivery-record-only commits may follow the published source. No winner has been selected. The existing homepage and functional routes remain unchanged. GitHub remains the sole contribution tracker.
 
 ## What was done
 - Current request: added `/prototypes/` with Library, Workbench, and Index concepts, URL-backed comparison controls, working search/filter, and an interactive illustrative unit map.
@@ -19,6 +20,8 @@ Owen rejected the first visual design and requested substantially different prot
 - Applied frontend design/orchestration, style exploration, craft, Hallmark, motion, imagegen, and prototype skills. Details and asset provenance are in docs/PROTOTYPES.md.
 - Mechanically reviewed prototype controls and base-site preservation; fixed mobile accessible style labels and unsupported query filters. Reviewed screenshots on desktop, tablet, and phones.
 - The session-retrospective request was explicitly declined; do not ask again for this completed build.
+- Prototype publication returned status succeeded, deployment appgdep_6ad326750fa48191834c8fb5fac8db9f, version appgprj_6ad31e6fc4e881918feeed6c3e474d0c~appgver_3bc04c1306bc8191a292f69ec6148d9b.
+- Prototype GitHub CI succeeded: https://github.com/THEROCKSSS/decomp-atlas/actions/runs/39014445200/job/117343517449 . The known shell-wrapper failure was handled with the official Node static preparer and native Windows tar; the source helper verified the exact pushed commit.
 - Confirmed first-version scope and GitHub choice with Owen.
 - Created the public GitHub repository with an initial README.
 - Registered the owner-private Decomp Atlas Site and persisted its identity in .openai/hosting.json.
@@ -37,7 +40,7 @@ Owen rejected the first visual design and requested substantially different prot
 - Added README, CONTRIBUTING.md, MIT license for original Atlas work, and docs/VERIFICATION.md.
 
 ## What's not done
-- Private prototype publication is pending. Choosing a direction belongs to Owen; do not turn a prototype into the permanent site without that choice.
+- Choosing a direction belongs to Owen; do not turn a prototype into the permanent site without that choice. The comparison page is published and ready for that review.
 - The source PR remains unmerged for Owen. Until merged, the default GitHub branch contains only the bootstrap README; full contribution templates and source are on the PR branch.
 - Site audience remains private; public visitor access has not been requested.
 - Task claims, hosted builds, progress uploads, and a live metrics feed are outside the agreed first version.
@@ -74,5 +77,5 @@ From this project directory:
 - [x] Build three distinct visual structures and comparison controls.
 - [x] Exercise controls and review desktop/mobile rendering.
 - [x] Capture the prototype branch and open its review PR.
-- [ ] Publish the comparison route privately and remove unused artifacts.
+- [x] Publish the comparison route privately. Task-owned preview, package staging, and archive are removed at close; useful screenshots remain in output/prototypes/.
 - [ ] Owen chooses a direction; integrate it only after that choice.

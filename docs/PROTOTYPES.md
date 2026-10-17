@@ -50,4 +50,6 @@ Self-critique after rendered review (subjective, not user acceptance): Library P
 
 ## Current delivery state
 
-Implementation and local checks complete. Private publication and the prototype review PR are recorded in HANDOFF.md after execution. Choosing a style is the next product decision.
+Implementation and checks are complete. Native Sites publication returned `succeeded` for source fa5040f563ffdf2a6ab726c88e04e29eff2ccf55. Compare at https://decomp-atlas.richlotus16.chatgpt.site/prototypes/?variant=library . The site remains owner-private; Workbench and Index are available through the switcher or their variant URL.
+
+Draft PR https://github.com/THEROCKSSS/decomp-atlas/pull/2 preserves the prototypes and has a successful GitHub Actions check. The exact native version/deployment identifiers are in HANDOFF.md. Choosing a style is the next product decision; no prototype was promoted or merged.
