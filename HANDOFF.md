@@ -9,7 +9,7 @@
 - Existing PR stack: #1 initial; draft #2 historical prototypes (preserve, not a merge prerequisite); #3 Library based on initial; #4 progress graphs based on Library. New feature PR must base codex/progress-graphs. Leave all merging to Owen.
 
 ## Current state
-The homepage matching/remaining summaries and shareable treemap are implemented and verified locally, with source changes currently uncommitted. Previous Site version 4 serves source 14fa5950a38868704d4cd3196270a30709862701. Commit/push, review PR and private publication of this feature remain. Library and the accepted matching-versus-ALL-remaining definition stay settled. GitHub is the sole tracker; no new interview is needed.
+The homepage matching/remaining summaries and shareable treemap are implemented and verified locally, at source commit 8394f189589c38811ee8c8c7c52921bc5cb115fa, pushed to GitHub. Previous Site version 4 serves source 14fa5950a38868704d4cd3196270a30709862701. PR #5 is open at https://github.com/THEROCKSSS/decomp-atlas/pull/5, based on codex/progress-graphs. Private publication remains. Library and the accepted matching-versus-ALL-remaining definition stay settled. GitHub is the sole tracker; no new interview is needed.
 
 ## What was done
 - Homepage cards fetch compact overview feeds independently and display exact code-byte matching/remaining percentages, dates, historical labels and useful unavailable states. Their project/export links are separate accessible targets.
@@ -24,7 +24,7 @@ The homepage matching/remaining summaries and shareable treemap are implemented 
 - [x] Inspect reference image, accepted decisions, memory and real report.
 - [x] Implement validated summaries, map and standalone exports.
 - [x] Exercise build/tests, browsers, failure states and independent reviews.
-- [ ] Commit/push, open PR and check CI.
+- [x] Commit/push and open PR #5; CI is running.
 - [ ] Publish exact source privately; verify hosted cards, map and downloads.
 - [ ] Record delivery IDs/source; stop owned preview/browser and inspect artifacts.
 
@@ -46,3 +46,5 @@ The homepage matching/remaining summaries and shareable treemap are implemented 
 - Treemap export currently supports the connected decomp.dev Sims provider. Other projects keep summary/no-report states. decomp.dev is being sunset; no unverified ByteMatch migration.
 - Tests are feature validation, not an accessibility/security certification or every possible upstream response. Hosted behavior remains pending this feature's publication.
 - Session retrospective explicitly declined; do not ask again.
+
+Source-helper first save stopped safely because HANDOFF.md changed during saving. Commit the delivery-preparation record before retrying source synchronization; do not edit tracked files during that operation.
