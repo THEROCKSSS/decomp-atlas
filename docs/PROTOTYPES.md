@@ -1,6 +1,6 @@
 # Homepage style prototypes
 
-Owen rejected the first website design and requested substantially different, nicer prototype styles. These are alternatives to review; no visual direction has been approved.
+Owen rejected the first website design and requested substantially different, nicer prototype styles. He subsequently selected **A, Library**, and requested its application across the whole website, including the wiki and project pages. The following records the original exploration on `prototype/decomp-atlas-styles`, not the current production file layout. The accepted system is documented in `../design.md`.
 
 ## Compare
 
@@ -50,6 +50,6 @@ Self-critique after rendered review (subjective, not user acceptance): Library P
 
 ## Current delivery state
 
-Implementation and checks are complete. Native Sites publication returned `succeeded` for source fa5040f563ffdf2a6ab726c88e04e29eff2ccf55. Compare at https://decomp-atlas.richlotus16.chatgpt.site/prototypes/?variant=library . The site remains owner-private; Workbench and Index are available through the switcher or their variant URL.
+The prototype publication returned `succeeded` for source fa5040f563ffdf2a6ab726c88e04e29eff2ccf55. The site remains owner-private. After the accepted Library rollout, `/prototypes/` redirects to the catalogue; the source branch preserves the three styles and switcher for historical review.
 
-Draft PR https://github.com/THEROCKSSS/decomp-atlas/pull/2 preserves the prototypes and has a successful GitHub Actions check. The exact native version/deployment identifiers are in HANDOFF.md. Choosing a style is the next product decision; no prototype was promoted or merged.
+Draft PR https://github.com/THEROCKSSS/decomp-atlas/pull/2 preserves the prototypes and has a successful GitHub Actions check. Library is the settled choice. The separate rollout branch promotes its assets and system across all routes and removes the unused prototype runtime from production. Merge remains with Owen.

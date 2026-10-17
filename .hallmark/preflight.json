@@ -1,13 +1,12 @@
 {
   "date": "2026-10-17",
-  "scope": "homepage prototypes",
+  "scope": "Library design across the entire site",
   "framework": "native static HTML/CSS/JavaScript",
-  "existingFonts": ["Georgia", "Segoe UI", "Consolas"],
+  "existingFonts": ["Space Grotesk", "Manrope", "JetBrains Mono"],
   "existingMode": "dark",
   "existingMotionLibraries": [],
-  "existingStyle": "serif feature and table-led catalogue",
-  "userDirection": "Reject the existing visual design; produce substantially different prototype styles",
-  "preserved": ["framework", "catalogue facts", "upstream credits", "working routes", "original homepage"],
-  "prototypeFonts": ["Space Grotesk", "Manrope", "Barlow Condensed", "JetBrains Mono"],
-  "note": "At most three type families are visible within one concept. No permanent design is locked."
+  "existingStyle": "selected Library: dark violet, artwork-led collection, icon rail",
+  "userDirection": "Apply A, Library across the whole site, including wiki and project pages",
+  "preserved": ["framework", "catalogue facts", "upstream credits", "working routes", "submission contracts", "prototype source branch"],
+  "note": "User selection locks the Library system. No new style interview is required. Contract: design.md."
 }

@@ -1,32 +1,50 @@
 const search = document.querySelector('#project-search');
-const platform = document.querySelector('#platform-filter');
-const rows = [...document.querySelectorAll('[data-project]')];
-function filterProjects() {
-  const query = search.value.trim().toLocaleLowerCase();
-  let count = 0;
-  for (const row of rows) {
-    row.hidden = !(row.dataset.search.includes(query) && (!platform.value || row.dataset.platform === platform.value));
-    if (!row.hidden) count += 1;
-  }
-  document.querySelector('#result-count').textContent = `${count} ${count === 1 ? 'project' : 'projects'}`;
-  document.querySelector('#no-results').hidden = count !== 0;
+if (document.body.hasAttribute('data-legacy-prototype')) {
+  const original = new URLSearchParams(location.search);
   const params = new URLSearchParams();
-  if (query) params.set('q', search.value.trim());
-  if (platform.value) params.set('platform', platform.value);
-  history.replaceState(null, '', `${location.pathname}${params.size ? `?${params}` : ''}${location.hash}`);
+  for (const key of ['q', 'platform']) if (original.get(key)) params.set(key, original.get(key).slice(0, 200));
+  location.replace(`/${params.size ? `?${params}` : ''}`);
 }
-if (search) {
-  const params = new URLSearchParams(location.search);
-  search.value = params.get('q') || '';
-  const selection = params.get('platform');
-  if ([...platform.options].some(option => option.value === selection)) platform.value = selection;
+const catalogue = document.querySelector('[data-catalogue]');
+if (catalogue) {
+  const rows = [...catalogue.querySelectorAll('[data-project]')];
+  const pills = [...catalogue.querySelectorAll('[data-platform-filter]')];
+  const platform = document.querySelector('#platform-value');
+  function readFilters() {
+    const params = new URLSearchParams(location.search);
+    search.value = (params.get('q') || '').slice(0, 200);
+    const selection = params.get('platform');
+    platform.value = pills.some(pill => pill.dataset.platformFilter === selection) ? selection : '';
+  }
+  function filterProjects() {
+    const query = search.value.trim().toLocaleLowerCase();
+    let count = 0;
+    for (const row of rows) {
+      row.hidden = !(row.dataset.search.includes(query) && (!platform.value || row.dataset.platform === platform.value));
+      if (!row.hidden) count += 1;
+    }
+    for (const pill of pills) pill.setAttribute('aria-pressed', String(pill.dataset.platformFilter === platform.value));
+    document.querySelector('#result-count').textContent = `${count} ${count === 1 ? 'project' : 'projects'}`;
+    document.querySelector('#no-results').hidden = count !== 0;
+    const params = new URLSearchParams();
+    if (query) params.set('q', search.value.trim());
+    if (platform.value) params.set('platform', platform.value);
+    history.replaceState(null, '', `${location.pathname}${params.size ? `?${params}` : ''}${location.hash}`);
+  }
   search.addEventListener('input', filterProjects);
-  platform.addEventListener('change', filterProjects);
+  document.querySelector('#catalogue-search-form').addEventListener('submit', event => { event.preventDefault(); filterProjects(); });
+  pills.forEach(pill => pill.addEventListener('click', () => { platform.value = pill.dataset.platformFilter; filterProjects(); }));
   document.querySelector('#clear-filters').addEventListener('click', () => {
     search.value = ''; platform.value = ''; filterProjects(); search.focus();
   });
+  window.addEventListener('popstate', () => { readFilters(); filterProjects(); });
+  readFilters();
   filterProjects();
 }
+document.addEventListener('keydown', event => {
+  if (event.key !== '/' || event.ctrlKey || event.metaKey || event.altKey || event.target.closest('input, textarea, select, [contenteditable="true"]')) return;
+  event.preventDefault(); search?.focus();
+});
 
 const form = document.querySelector('#submission-form');
 if (form) {
