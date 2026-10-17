@@ -37,4 +37,8 @@ Project metadata was checked against the canonical natebag/Sims2DECOMP, zeldaret
 
 ## Delivery boundaries
 
-The public source change is reviewed through a GitHub pull request. The website starts owner-private. Native Sites results determine deployment success; local browser evidence alone does not establish a deployed URL. HANDOFF.md records the final PR and hosting state.
+The public source change is in open GitHub PR #1. Its GitHub Actions check returned SUCCESS. No merge was performed.
+
+Native Sites private publication returned `status: succeeded` and https://decomp-atlas.richlotus16.chatgpt.site for source commit 9031ace1c1df37a3626e21fdd5a070d8bc6a0612. The first packaging wrapper failed because it passed a Windows path to WSL bash; the same official Node static-preparation helper plus native Windows tar produced the inspected deployment archive. Publication then succeeded with the original Site ID. No plugin source or host configuration was modified.
+
+This verifies hosting through the native service result. The full journey checks above exercised the local build; authenticated browser exercise of every private production route is not claimed. HANDOFF.md records the exact version and deployment identifiers.
