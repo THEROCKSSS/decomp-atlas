@@ -31,13 +31,19 @@ for (const project of projects) {
   secureUrl(project.contributing);
   if (project.board) secureUrl(project.board);
   for (const unit of project.units) secureUrl(unit.url);
+  if (project.progress) {
+    assert(['decomp-dev', 'zelda'].includes(project.progress.provider));
+    assert(project.progress.version?.trim());
+    if (project.progress.provider === 'zelda') assert.equal(project.repository, 'https://github.com/zeldaret/oot');
+    for (const unit of project.units) assert.match(unit.reportCommit || '', /^[a-f0-9]{40}$/i, 'Curated graph units need a verified report commit');
+  }
 }
 for (const article of articles) {
   assert(article.summary && article.category && article.sections.length && article.sources.length);
   for (const section of article.sections) assert(section.title && section.text);
   for (const source of article.sources) { assert(source.label); secureUrl(source.url); }
 }
-for (const file of ['public/assets/app.js', ...((await readdir('scripts')).filter(file => file.endsWith('.mjs')).map(file => `scripts/${file}`))]) {
+for (const file of [...((await readdir('public/assets')).filter(file => file.endsWith('.js')).map(file => `public/assets/${file}`)), ...((await readdir('scripts')).filter(file => file.endsWith('.mjs')).map(file => `scripts/${file}`))]) {
   const result = spawnSync(process.execPath, ['--check', file], { encoding: 'utf8' });
   assert.equal(result.status, 0, result.stderr);
 }

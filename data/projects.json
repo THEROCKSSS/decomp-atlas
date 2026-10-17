@@ -11,10 +11,12 @@
     "contributing": "https://natebag.github.io/Sims2DECOMP/contributing/",
     "board": "https://decomp.dev/natebag/Sims2DECOMP",
     "boardStatus": "disabled",
+    "progress": { "provider": "decomp-dev", "version": "G4ZE69" },
     "boardNote": "The linked decomp.dev page reported that this project was disabled when checked on October 17, 2026. Its displayed percentages may be stale. Check the repository for current status.",
     "units": [
       {
         "name": "targets_s2c",
+        "reportCommit": "72278b244e431de11a88e658fb81df8e5057a3aa",
         "url": "https://decomp.dev/natebag/Sims2DECOMP?unit=targets_s2c"
       }
     ],
@@ -33,6 +35,7 @@
     "contributing": "https://github.com/zeldaret/oot#contributing",
     "board": "https://zelda.deco.mp/games/oot",
     "boardStatus": "external",
+    "progress": { "provider": "zelda", "version": "MQ Debug ROM" },
     "boardNote": "Progress is maintained by the upstream project on its own dashboard. Open that dashboard for current measurements.",
     "units": [],
     "note": "Follow the upstream version and toolchain instructions before choosing a function. A tutorial or documentation improvement can also be a useful contribution.",

@@ -13,6 +13,7 @@ Make decompilation projects easy to discover, keep original maintainer credit vi
 - An icon rail, compact wordmark, Discover / The wiki navigation, project search, and Add a project action appear throughout. Mobile overrides turn the rail horizontal and keep search usable.
 - Original artwork belongs to the browsing and project surfaces. The wiki uses type, spacing, rules, and small outline icons. A generic original illustration covers projects without bespoke artwork.
 - Project detail routes preserve prominent maintainer credit, canonical links, source-check dates, and explicit NON-LIVE DATA labels. Upstream boards remain external; no invented progress numbers.
+- Integrated progress graphs use the Library palette, matching and all remaining bytes/functions, exact-count hover/focus/touch feedback, and restrained reveal motion. Live feed labels are separate from the age/status of the report. Curated unit views preserve URL state. See `docs/PROGRESS.md` for source and metric rules.
 - Guide articles have readable line lengths, contents anchors, source links, and copyable commands. Submission tickets remain previewed locally and submitted by the visitor on GitHub.
 - Primary actions use violet; the featured project uses a light action. Borders and surface changes provide hierarchy without decorative gradients.
 
