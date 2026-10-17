@@ -7,10 +7,11 @@
 - Site: https://decomp-atlas.richlotus16.chatgpt.site — owner-private; reuse existing identity
 - Local: http://127.0.0.1:8798 (`npm run build`, `npm run check`, `npm test`, `npm run dev`)
 - Branch: codex/progress-graphs; base75dab8aaf6d9560f89a927be887c40c07c5c5700
+- Progress PR: https://github.com/THEROCKSSS/decomp-atlas/pull/4 — open, based on codex/library-design; leave unmerged
 - Prior lineage: PR#1 initial site, draftPR#2 historical prototypes, PR#3 selected Library rollout. Leave merging to Owen.
 
 ## Current state
-Owen requested integrated decompilation progress graphs and confirmed matching versus ALL remaining code. The Library design remains settled. The integration is implemented and locally verified, awaiting commit/PR/private publication. Existing published Library source is2cf0119e7d3a7c6c8c6f9dd199d10019abd03a8a, Site version3. No new tracker choice or style interview is needed.
+Owen requested integrated decompilation progress graphs and confirmed matching versus ALL remaining code. The Library design remains settled. The integration is complete and published owner-private as Site version4, exact source14fa5950a38868704d4cd3196270a30709862701. PR#4 is open and its implementation CI passed. This delivery-record commit follows publication without changing site assets. No new tracker choice or style interview is needed.
 
 ## What was done
 - Public live feed adapters in public/assets/progress-data.js and browser charts in progress.js; no dependencies, backend, credentials, uploads, or build execution added.
@@ -22,11 +23,15 @@ Owen requested integrated decompilation progress graphs and confirmed matching v
 - Added six adapter tests, CI test step, build validation and source syntax checks, plus docs/PROGRESS.md. Wiki/README explain the graph definitions and separate live retrieval from old reports. decomp.dev sunset/closed registration is reflected with a sourced migration link; no unverified host swap.
 - Actual build/check/tests passed. Browser checks covered30 responsive states,15 fully revealed chart checks, real APIs, exact values, unit/reload/keyboard/cancellation, reduced motion, no-report states, failed source/retry, zero/invalid counts and changed commits. Two mechanical reviews completed; findings were fixed. See docs/VERIFICATION.md.
 - Evidence: ignored output/progress/ has hashes/source probes, desktop/tablet/phone screenshots, and controlled failure screenshot. Sources and screenshots are not bundled as a fake progress feed.
+- Source commit14fa5950a38868704d4cd3196270a30709862701 was pushed to GitHub and the Sites source. Staged whitespace and credential-pattern checks passed with zero matches. PR#4 readback confirmed base/head/state; CI passed: https://github.com/THEROCKSSS/decomp-atlas/actions/runs/39019814772/job/117359218016 .
+- The known Windows WSL packaging-wrapper path failure recurred after source push. Official Node static preparation and native Windows tar produced the inspected44-entry archive; no plugin changes. Native private deployment succeeded: appgdep_6ad33ac094008191a95e0ab1c57c179e, version appgprj_6ad31e6fc4e881918feeed6c3e474d0c~appgver_ecf9e7292be88191937d9fb20e804e03. Version readback confirms Site version4 and exact source14fa5950a38868704d4cd3196270a30709862701.
+- Authenticated in-app browser verified actual published network-fed charts for Sims2 overall, Sims2 targets_s2c, and OOT. Counts, target/version, historical dates, source links and report warnings rendered. Both upstream hosts work in the deployed page; no change to owner-private access. The browser deliverable remains open on the Sims unit view.
+- Task-owned local Chromium and preview server are stopped. Deployment archive (about2.6MB), prepared build (about3.1MB), and visual/probe evidence are retained under ignored output/progress/ for exact-version reproduction and review. Prior cleanup rejection remains recorded below; no destructive workaround was attempted.
 
 ## What's not done
-- Commit, open stacked PR against codex/library-design, publish exact source owner-private, then verify deployed cross-origin requests and record returned IDs.
+- The requested graphs and private publication are complete. Existing upstream limitations remain explicit: only verified reports are connected; unavailable measurements remain unavailable.
 - Merge remains with Owen. Public audience, task claims, hosted builds, report uploads and contributor metrics are not requested.
-- Prior automatic cleanup attempts were rejected with "blocked by policy". Older ignored dist/package/archive/PR text remains; preserve user data and do not bypass the gate. Current task-owned browser/server still need closing after delivery.
+- Prior automatic cleanup attempts were rejected with "blocked by policy". Older ignored dist/package/archive/PR text remains; preserve user data and do not bypass the gate. Current task-owned browser/server were closed after delivery.
 
 ## How to resume
 1. Run `npm run build`, `npm run check`, `npm test`, then `npm run dev` from this directory.
@@ -44,13 +49,13 @@ Owen requested integrated decompilation progress graphs and confirmed matching v
 - Both connected reports are historical. decomp.dev is being sunset; Sims has not been found on ByteMatch. Future feed failure shows retry/upstream links rather than fake values.
 - Unit verification is deliberately tied to the curated report commit. Update data/projects.json only after verifying a newer unit report.
 - Charts do not measure already-decompiled-but-nonmatching functional source or prove build success. No authentication, tenancy, storage or database surface was added; existing owner-private Sites enforcement is unchanged.
-- Local browser checks are not exhaustive deployed checks or an accessibility/security certification.
+- Local and representative deployed browser checks are complete; they are not an accessibility/security certification or exhaustive coverage of every possible upstream response.
 - Session retrospective was explicitly declined; do not ask again.
 
 ## Checklist
 - [x] Confirm metric meaning and prove actual source access.
 - [x] Implement source adapters, graph states and curated unit links.
 - [x] Run tests, browser journeys, responsive/motion checks, review and documentation.
-- [ ] Commit/push/open reviewed progress PR.
-- [ ] Publish exact source privately and verify actual deployed charts.
-- [ ] Stop task-owned local browser/server and record final state.
+- [x] Commit/push/open reviewed progress PR.
+- [x] Publish exact source privately and verify actual deployed charts.
+- [x] Stop task-owned local browser/server and record final state.
