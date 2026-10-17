@@ -7,9 +7,10 @@
 - Prior sessions: none
 - Local preview: http://127.0.0.1:8798 (only while the dev process is running)
 - Site: private, registered; deployment not yet performed
+- Source PR: https://github.com/THEROCKSSS/decomp-atlas/pull/1 (open; do not self-merge)
 
 ## Current state
-Initial GitHub README commit fb6cb080214c16a3db4761c01a9ae00af1f58881; working branch codex/initial-site. The full first version is implemented and locally verified, ready for its implementation commit, GitHub PR, and private Site deployment. GitHub is the confirmed tracker. The workspace's unrelated work was left intact.
+Implementation commit 42884f1622cd94726e3f8b5edb649e962d8dc260 is pushed on codex/initial-site. GitHub PR #1 is open into main and was read back with the expected branches. This handoff update follows the implementation commit. The full first version is locally verified and ready for private Site deployment. GitHub is the confirmed tracker. The workspace's unrelated work was left intact.
 
 ## What was done
 - Confirmed first-version scope and GitHub choice with Owen.
@@ -26,7 +27,7 @@ Initial GitHub README commit fb6cb080214c16a3db4761c01a9ae00af1f58881; working b
 - Added README, CONTRIBUTING.md, MIT license for original Atlas work, and docs/VERIFICATION.md.
 
 ## What's not done
-- Commit, GitHub PR, private Site deployment, and final cleanup are pending. The source PR will remain unmerged for Owen.
+- Private Site deployment and final cleanup are pending. The source PR remains unmerged for Owen.
 - Site audience remains private; public visitor access has not been requested.
 
 ## How to resume
@@ -41,6 +42,7 @@ From this project directory:
 - Sites: .openai/hosting.json stores project identity, never the temporary write token.
 - No runtime secrets, database, or API integrations are needed.
 - The Sites source snapshot uses its connector-managed Git endpoint; GitHub remains the only issue/PR tracker.
+- The GitHub feature branch was published and its remote SHA matched implementation commit 42884f1.
 
 ## Known issues / blockers
 - Sims2 decomp.dev dashboard says the project is disabled; no progress percentages are displayed in Atlas.
