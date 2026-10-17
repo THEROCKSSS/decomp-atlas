@@ -68,6 +68,10 @@
       {
         "title": "Read the Atlas graphs",
         "text": "Atlas graphs compare fully matching code with all remaining code. The remaining amount is the report total minus matching; it does not mean that code has already been decompiled. Byte counts and function counts have different denominators. Completed or linked code appears separately when reported. Each graph shows its target version, project or unit scope, source date, and original feed. LIVE DATA means the feed was fetched directly; a HISTORICAL REPORT label and warning identify old or disabled reports."
+      },
+      {
+        "title": "Share a code map",
+        "text": "Homepage cards show matching and remaining code bytes for connected reports. On supported project pages, open Code unit map to download an SVG or PNG. Tile area represents code size; color represents exact matching coverage. The whole-project map includes maintainer credit, report date, source and a NON-LIVE DATA snapshot label. Add the downloaded image beside your GitHub README, or upload it elsewhere, and use Copy Markdown. Adjust the image path if you store it in another folder."
       }
     ],
     "sources": [

@@ -37,7 +37,7 @@ function shell(title, content, { active = 'projects', kind = '', description = '
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
   <link rel="stylesheet" href="/assets/tokens.css"><link rel="stylesheet" href="/assets/style.css">
   <script src="/assets/app.js" defer></script>
-  ${kind === 'project' ? '<script type="module" src="/assets/progress.js"></script>' : ''}
+  ${kind === 'project' ? '<script type="module" src="/assets/progress.js"></script><script type="module" src="/assets/treemap.js"></script>' : kind === 'home' ? '<script type="module" src="/assets/home-progress.js"></script>' : ''}
 </head><body class="page-${kind}"${redirect ? ' data-legacy-prototype' : ''}>
   <a class="skip" href="#main">Skip to content</a>
   <aside class="site-rail" aria-label="Site navigation">
@@ -65,11 +65,16 @@ function shell(title, content, { active = 'projects', kind = '', description = '
 }
 function projectCard(project, { filter = false } = {}) {
   const fields = filter ? ` data-project="${escape(project.slug)}" data-search="${escape(`${project.title} ${project.repositoryName} ${project.owner} ${project.platform} ${project.language}`.toLowerCase())}" data-platform="${escape(project.platform)}"` : '';
-  return `<a class="game-card" href="/projects/${escape(project.slug)}/"${fields}>
+  const body = `
     <div class="game-art">${cover(project)}<span class="game-platform">${escape(project.platform)}</span></div>
     <div class="game-card-title"><h3>${escape(project.title)}</h3>${arrow}</div>
     <p>by ${escape(project.owner)} & contributors</p><span class="game-repo">${escape(project.owner)}/${escape(project.repositoryName)}</span>
-  </a>`;
+  `;
+  if (!filter) return `<a class="game-card" href="/projects/${escape(project.slug)}/">${body}</a>`;
+  return `<article class="game-card"${fields}><a class="game-card-main" href="/projects/${escape(project.slug)}/">${body}</a>
+    <div class="card-progress"${project.progress ? ` data-card-progress-provider="${escape(project.progress.provider)}" data-owner="${escape(project.owner)}" data-repo="${escape(project.repositoryName)}" data-version="${escape(project.progress.version)}" data-board-disabled="${project.boardStatus === 'disabled'}"` : ''} aria-label="${escape(project.title)} code progress"><p class="card-progress-state" role="status">${project.progress ? 'Loading code progress…' : 'No structured report connected.'}</p>${project.progress ? '' : '<span class="card-report-note">Open the project for upstream guidance.</span>'}</div>
+    ${project.progress?.provider === 'decomp-dev' ? `<a class="card-export-link" href="/projects/${escape(project.slug)}/?map=1#code-map">Code map & export ${arrow}</a>` : ''}
+  </article>`;
 }
 function guideCard(article, index) {
   return `<a class="guide-card" href="/wiki/${escape(article.slug)}/">
@@ -108,6 +113,14 @@ function progressPanel(project) {
     <p class="report-status" data-report-status role="status">Loading the latest available upstream report…</p><div data-report-results></div><button type="button" class="button secondary report-retry" data-report-retry hidden>Retry report</button><noscript><p class="small">Enable JavaScript to load graphs directly from the upstream source, or use the board link below.</p></noscript>
   </div>`;
 }
+function treemapPanel(project) {
+  if (project.progress?.provider !== 'decomp-dev') return '';
+  return `<section class="panel code-map-panel" id="code-map" data-treemap data-owner="${escape(project.owner)}" data-repo="${escape(project.repositoryName)}" data-version="${escape(project.progress.version)}" data-project-title="${escape(project.title)}" data-slug="${escape(project.slug)}" data-board-disabled="${project.boardStatus === 'disabled'}">
+    <div class="panel-heading"><h2>Code unit map</h2><span class="data-label">2:1 MAP · SVG / PNG</span></div><p>A wide treemap like the upstream board. Each tile’s area represents code bytes; color shows exact matching coverage. This map covers the entire project.</p>
+    <details class="treemap-disclosure"><summary>Open treemap & export</summary><div class="treemap-content"><p class="small" data-map-status role="status">Open the map to load the upstream unit report.</p><div data-map-result></div><button type="button" class="button secondary" data-map-retry hidden>Retry map</button></div></details>
+    <noscript><p class="small">Enable JavaScript to load and export the unit map. The original progress board is linked above.</p></noscript>
+  </section>`;
+}
 function projectPage(project, projects) {
   const correction = new URL(`${repo}/issues/new`);
   correction.searchParams.set('title', `[Correction] ${project.title}`);
@@ -123,7 +136,7 @@ function projectPage(project, projects) {
       ${project.board ? `<a class="button secondary" href="${escape(project.board)}">Open upstream progress board ${arrow}</a>` : `<a class="text-link" href="${escape(project.contributing)}">Find work in the project docs ${arrow}</a>`}
       ${project.units.length ? `<div class="unit-list"><h3>Unit drill-down</h3>${project.units.map(unit => `<a class="unit-link" href="${escape(unit.reportCommit ? `/projects/${project.slug}/?unit=${encodeURIComponent(unit.name)}` : unit.url)}"><span>${escape(unit.name)}</span>${arrow}</a>`).join('')}</div>` : ''}
       <p class="small">Board tiles measure code progress. Check upstream issues and contribution instructions for tasks you can take.</p>
-    </section><section class="panel"><h2>Before you contribute</h2><p>${escape(project.note)}</p><div class="notice">${icon('alert')}<p>${project.slug === 'sims2' ? 'A byte-identical executable and handwritten source coverage are different claims. The graphs count matching bytes and functions reported upstream.' : 'Read the upstream project’s current guidance and check existing work before choosing a task.'}</p></div><a class="text-link" href="/wiki/first-contribution/">Read the first-contribution guide ${arrow}</a></section></div>
+    </section>${treemapPanel(project)}<section class="panel"><h2>Before you contribute</h2><p>${escape(project.note)}</p><div class="notice">${icon('alert')}<p>${project.slug === 'sims2' ? 'A byte-identical executable and handwritten source coverage are different claims. The graphs count matching bytes and functions reported upstream.' : 'Read the upstream project’s current guidance and check existing work before choosing a task.'}</p></div><a class="text-link" href="/wiki/first-contribution/">Read the first-contribution guide ${arrow}</a></section></div>
     <aside class="project-credit"><section class="panel credit-panel"><span class="guide-icon">${icon('cube')}</span><h2>Credit where it belongs.</h2><dl class="credit-list"><div><dt>Upstream maintainer / team</dt><dd>${link(`https://github.com/${project.owner}`, project.owner)} & contributors</dd></div><div><dt>Canonical repository</dt><dd>${link(project.repository, `${project.owner}/${project.repositoryName}`)}</dd></div><div><dt>Target platform</dt><dd>${escape(project.platform)}</dd></div><div><dt>Listing sources checked</dt><dd>${escape(date(project.checkedOn))}</dd></div></dl><p class="small">Showcased by Decomp Atlas. Ownership and credit stay with the original team. Listing does not imply endorsement.</p><span class="data-label">NON-LIVE DATA</span></section><a class="text-link correction-link" href="${escape(correction.href)}">Suggest a correction ${arrow}</a></aside></div>
     ${related.length ? `<section class="related-projects"><div class="section-heading"><h2>More in the collection</h2><a class="text-link" href="/#collection">All projects ${arrow}</a></div><div class="project-grid related-grid">${related.map(project => projectCard(project)).join('')}</div></section>` : ''}
   `, { kind: 'project', description: project.summary });

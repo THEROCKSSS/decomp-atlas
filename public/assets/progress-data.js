@@ -50,10 +50,11 @@ export function parseZelda(matchingCsv, decompiledCsv) {
   if (decompiled && (decompiled.code.total !== latest.code.total || decompiled.code.matching < latest.code.matching)) throw new Error('Incompatible progress measures');
   return { ...latest, version: 'MQ Debug ROM', versions: [], functions: null, supplement: decompiled ? { label: 'Decompiled code (includes matching)', value: decompiled.code.matching, total: decompiled.code.total, percent: decompiled.code.percent, note: 'The upstream nonmatching feed includes matching code. These percentages must not be added together.' } : null };
 }
-async function read(url, signal) {
-  const response = await fetch(url, { signal, credentials: 'omit', cache: 'no-store', referrerPolicy: 'no-referrer' });
+export async function readProgressSource(url, signal, maximum = 1024 * 1024) {
+  const source = new URL(url);
+  if (source.protocol !== 'https:' || !['decomp.dev', 'zelda.deco.mp'].includes(source.hostname) || source.username || source.password || source.port) throw new Error('Unapproved progress source');
+  const response = await fetch(url, { signal, credentials: 'omit', cache: 'no-store', referrerPolicy: 'no-referrer', redirect: 'error' });
   if (!response.ok) throw new Error(`Source returned ${response.status}`);
-  const maximum = 1024 * 1024;
   if (Number(response.headers.get('content-length')) > maximum) throw new Error('Progress feed too large');
   const reader = response.body.getReader();
   const chunks = []; let length = 0;
@@ -75,12 +76,12 @@ export async function fetchProgress(context, signal) {
     const url = new URL(`https://decomp.dev/${context.owner}/${context.repo}.json`);
     url.searchParams.set('version', context.version);
     if (context.unit) url.searchParams.set('unit', context.unit);
-    return { ...parseObjdiff(JSON.parse(await read(url, signal)), context), sources: [{ label: 'decomp.dev report JSON', url: url.href }] };
+    return { ...parseObjdiff(JSON.parse(await readProgressSource(url, signal)), context), sources: [{ label: 'decomp.dev report JSON', url: url.href }] };
   }
   if (context.provider === 'zelda' && context.owner === 'zeldaret' && context.repo === 'oot') {
     const matching = 'https://zelda.deco.mp/assets/csv/progress-oot-matching.csv';
     const decompiled = 'https://zelda.deco.mp/assets/csv/progress-oot-nonmatching.csv';
-    const [match, complete] = await Promise.all([read(matching, signal), read(decompiled, signal).catch(error => { if (signal.aborted) throw error; return null; })]);
+    const [match, complete] = await Promise.all([readProgressSource(matching, signal), readProgressSource(decompiled, signal).catch(error => { if (signal.aborted) throw error; return null; })]);
     return { ...parseZelda(match, complete), sources: [{ label: 'Zelda matching feed', url: matching }, ...(complete ? [{ label: 'Zelda decompiled feed', url: decompiled }] : [])] };
   }
   throw new Error('No verified progress source');
