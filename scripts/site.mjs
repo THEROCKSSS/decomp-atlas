@@ -37,6 +37,7 @@ function shell(title, content, { active = 'projects', kind = '', description = '
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
   <link rel="stylesheet" href="/assets/tokens.css"><link rel="stylesheet" href="/assets/style.css">
   <script src="/assets/app.js" defer></script>
+  ${kind === 'project' ? '<script type="module" src="/assets/progress.js"></script>' : ''}
 </head><body class="page-${kind}"${redirect ? ' data-legacy-prototype' : ''}>
   <a class="skip" href="#main">Skip to content</a>
   <aside class="site-rail" aria-label="Site navigation">
@@ -100,6 +101,13 @@ function home(projects) {
     <section class="home-bottom"><div class="library-guide"><span class="outline-icon">${icon('book')}</span><div><h2>Curiosity is a good starting point.</h2><p>Set up a build, read a progress board, or make your first contribution.</p></div><a class="text-link" href="/wiki/">Open the wiki ${arrow}</a></div><div class="collection-note"><span>Independent projects. Original creators. Always credited.</span><a href="/wiki/credits-and-metrics/">How we credit projects ${arrow}</a></div></section>
   `, { kind: 'home' });
 }
+function progressPanel(project) {
+  if (!project.progress) return '<div class="progress-unavailable"><h3>No structured report connected.</h3><p>This project’s current progress is in its upstream documentation. Unavailable measurements are not zero progress.</p></div>';
+  return `<div class="progress-report" data-progress-provider="${escape(project.progress.provider)}" data-progress-owner="${escape(project.owner)}" data-progress-repo="${escape(project.repositoryName)}" data-progress-version="${escape(project.progress.version)}" data-board-disabled="${project.boardStatus === 'disabled'}">
+    <div class="report-controls"${project.units.length ? '' : ' hidden'}><label for="report-unit">Report scope</label><select id="report-unit"><option value="">Entire project</option>${project.units.filter(unit => unit.reportCommit).map(unit => `<option value="${escape(unit.name)}" data-report-commit="${escape(unit.reportCommit)}">${escape(unit.name)}</option>`).join('')}</select></div>
+    <p class="report-status" data-report-status role="status">Loading the latest available upstream report…</p><div data-report-results></div><button type="button" class="button secondary report-retry" data-report-retry hidden>Retry report</button><noscript><p class="small">Enable JavaScript to load graphs directly from the upstream source, or use the board link below.</p></noscript>
+  </div>`;
+}
 function projectPage(project, projects) {
   const correction = new URL(`${repo}/issues/new`);
   correction.searchParams.set('title', `[Correction] ${project.title}`);
@@ -111,11 +119,11 @@ function projectPage(project, projects) {
       <a class="creator" href="https://github.com/${escape(project.owner)}"><span class="creator-avatar">${escape(project.owner[0])}</span><span>A project by ${escape(project.owner)} <small>& contributors</small></span></a>
       <div class="actions"><a class="button" href="${escape(project.repository)}">${icon('github')}Open repository ${arrow}</a><a class="button secondary" href="${escape(project.contributing)}">Contribution instructions ${arrow}</a></div>
     </div><figure class="project-heading-art">${cover(project, { eager: true })}<figcaption>Original illustration · not a game screenshot</figcaption></figure></section>
-    <div class="project-layout"><div class="project-details"><section class="panel"><div class="panel-heading"><h2>Progress & work ahead</h2>${status(project)}</div><p>${escape(project.boardNote)}</p>
+    <div class="project-layout"><div class="project-details"><section class="panel"><div class="panel-heading"><h2>Decompilation progress</h2>${status(project)}</div>${progressPanel(project)}<p>${escape(project.boardNote)}</p>
       ${project.board ? `<a class="button secondary" href="${escape(project.board)}">Open upstream progress board ${arrow}</a>` : `<a class="text-link" href="${escape(project.contributing)}">Find work in the project docs ${arrow}</a>`}
-      ${project.units.length ? `<div class="unit-list"><h3>Unit drill-down</h3>${project.units.map(unit => `<a class="unit-link" href="${escape(unit.url)}"><span>${escape(unit.name)}</span>${arrow}</a>`).join('')}</div>` : ''}
+      ${project.units.length ? `<div class="unit-list"><h3>Unit drill-down</h3>${project.units.map(unit => `<a class="unit-link" href="${escape(unit.reportCommit ? `/projects/${project.slug}/?unit=${encodeURIComponent(unit.name)}` : unit.url)}"><span>${escape(unit.name)}</span>${arrow}</a>`).join('')}</div>` : ''}
       <p class="small">Board tiles measure code progress. Check upstream issues and contribution instructions for tasks you can take.</p>
-    </section><section class="panel"><h2>Before you contribute</h2><p>${escape(project.note)}</p><div class="notice">${icon('alert')}<p>${project.slug === 'sims2' ? 'A byte-identical executable and handwritten source coverage are different claims. No percentage is mirrored here.' : 'Read the upstream project’s current guidance and check existing work before choosing a task.'}</p></div><a class="text-link" href="/wiki/first-contribution/">Read the first-contribution guide ${arrow}</a></section></div>
+    </section><section class="panel"><h2>Before you contribute</h2><p>${escape(project.note)}</p><div class="notice">${icon('alert')}<p>${project.slug === 'sims2' ? 'A byte-identical executable and handwritten source coverage are different claims. The graphs count matching bytes and functions reported upstream.' : 'Read the upstream project’s current guidance and check existing work before choosing a task.'}</p></div><a class="text-link" href="/wiki/first-contribution/">Read the first-contribution guide ${arrow}</a></section></div>
     <aside class="project-credit"><section class="panel credit-panel"><span class="guide-icon">${icon('cube')}</span><h2>Credit where it belongs.</h2><dl class="credit-list"><div><dt>Upstream maintainer / team</dt><dd>${link(`https://github.com/${project.owner}`, project.owner)} & contributors</dd></div><div><dt>Canonical repository</dt><dd>${link(project.repository, `${project.owner}/${project.repositoryName}`)}</dd></div><div><dt>Target platform</dt><dd>${escape(project.platform)}</dd></div><div><dt>Listing sources checked</dt><dd>${escape(date(project.checkedOn))}</dd></div></dl><p class="small">Showcased by Decomp Atlas. Ownership and credit stay with the original team. Listing does not imply endorsement.</p><span class="data-label">NON-LIVE DATA</span></section><a class="text-link correction-link" href="${escape(correction.href)}">Suggest a correction ${arrow}</a></aside></div>
     ${related.length ? `<section class="related-projects"><div class="section-heading"><h2>More in the collection</h2><a class="text-link" href="/#collection">All projects ${arrow}</a></div><div class="project-grid related-grid">${related.map(project => projectCard(project)).join('')}</div></section>` : ''}
   `, { kind: 'project', description: project.summary });

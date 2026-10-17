@@ -39,9 +39,9 @@ GitHub is this project's contribution tracker. Source changes go through pull re
 
 ## Sources and progress
 
-Bundled catalogue entries are labeled **NON-LIVE DATA**, with a source-check date on each project page. This version does not fetch progress percentages or contributor counts.
+Bundled catalogue entries are labeled **NON-LIVE DATA**, with a source-check date on each project page. Connected project graphs fetch public upstream feeds and show **LIVE DATA** alongside the report date, scope, target version, source, and fetch time. Old or disabled reports also show **HISTORICAL REPORT**. Matching versus all remaining code uses exact upstream byte/function counts; completed/linked code is a separate measure. No contributor counts are fetched. See [docs/PROGRESS.md](docs/PROGRESS.md).
 
-The Sims 2 listing links to both [its decomp.dev board](https://decomp.dev/natebag/Sims2DECOMP) and [the targets_s2c unit](https://decomp.dev/natebag/Sims2DECOMP?unit=targets_s2c). The board reported that the project was disabled when checked on October 17, 2026; Atlas discloses that state rather than presenting potentially stale numbers as current.
+The Sims 2 listing links to both [its decomp.dev board](https://decomp.dev/natebag/Sims2DECOMP) and an in-site `targets_s2c` graph view. The board reported that the project was disabled when checked on October 17, 2026; its last report is dated June 10, 2026. Ocarina of Time uses the upstream Zelda CSV feeds, whose latest report is dated August 15, 2024. These are historical reports, even when fetched now. Other listings explicitly show that no structured report is connected.
 
 The progress-board wiki uses the [official integration guide](https://decomp.wiki/tools/decomp-dev), [objdiff measurement schema](https://github.com/encounter/objdiff/blob/main/objdiff-core/protos/report.proto), and [decomp.dev GitHub App](https://github.com/apps/decomp-dev). A board describes code comparisons; available contribution tasks and claims remain with each upstream project.
 
@@ -49,6 +49,6 @@ The progress-board wiki uses the [official integration guide](https://decomp.wik
 
 `.openai/hosting.json` identifies the existing Site and its static `dist/` output. Use the Sites source and packaging workflow to publish that exact committed source. Keep temporary hosting credentials out of files and history.
 
-The next useful upgrades are more reviewed listings, link-status maintenance, and—if needed—an explicitly sourced, dated progress feed. Authentication, task claims, build execution, and report uploads are outside this version.
+The next useful upgrades are more reviewed listings, link-status maintenance, and additional verified progress providers. Authentication, task claims, build execution, and report uploads are outside this version.
 
 See [HANDOFF.md](HANDOFF.md) for the verified delivery state and [docs/SPEC.md](docs/SPEC.md) for the agreed scope.
