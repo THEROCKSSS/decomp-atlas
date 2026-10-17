@@ -8,9 +8,10 @@
 - Local preview: http://127.0.0.1:8798 (start with npm run dev; the task-owned preview is stopped during cleanup)
 - Site: https://decomp-atlas.richlotus16.chatgpt.site — owner-private, deployment succeeded
 - Source PR: https://github.com/THEROCKSSS/decomp-atlas/pull/1 (open; do not self-merge)
+- Prototype review PR: https://github.com/THEROCKSSS/decomp-atlas/pull/2 (draft, based on codex/initial-site; do not merge)
 
 ## Current state
-Owen rejected the first visual design and requested substantially different prototype styles. Three locally verified homepage concepts now live on prototype/decomp-atlas-styles, based on source branch commit 66d9891f6bec3ceddbd1e1c35f90e43501e7da05. The current task is to publish the comparison route and preserve it for Owen to choose a direction. No winner has been selected. The existing homepage and functional routes remain unchanged. The previous owner-private Site publication was source commit 9031ace1c1df37a3626e21fdd5a070d8bc6a0612. GitHub remains the sole contribution tracker.
+Owen rejected the first visual design and requested substantially different prototype styles. Three locally verified homepage concepts are committed as 8e185a1 and pushed on prototype/decomp-atlas-styles, based on source branch commit 66d9891f6bec3ceddbd1e1c35f90e43501e7da05. Draft PR #2 was read back with the correct base and head. Private publication of the comparison route is next. No winner has been selected. The existing homepage and functional routes remain unchanged. The previous owner-private Site publication was source commit 9031ace1c1df37a3626e21fdd5a070d8bc6a0612. GitHub remains the sole contribution tracker.
 
 ## What was done
 - Current request: added `/prototypes/` with Library, Workbench, and Index concepts, URL-backed comparison controls, working search/filter, and an interactive illustrative unit map.
@@ -36,7 +37,7 @@ Owen rejected the first visual design and requested substantially different prot
 - Added README, CONTRIBUTING.md, MIT license for original Atlas work, and docs/VERIFICATION.md.
 
 ## What's not done
-- Prototype publication and its review PR are pending. Choosing a direction belongs to Owen; do not turn a prototype into the permanent site without that choice.
+- Private prototype publication is pending. Choosing a direction belongs to Owen; do not turn a prototype into the permanent site without that choice.
 - The source PR remains unmerged for Owen. Until merged, the default GitHub branch contains only the bootstrap README; full contribution templates and source are on the PR branch.
 - Site audience remains private; public visitor access has not been requested.
 - Task claims, hosted builds, progress uploads, and a live metrics feed are outside the agreed first version.
@@ -72,6 +73,6 @@ From this project directory:
 - [x] Inspect the existing site and relevant design skills.
 - [x] Build three distinct visual structures and comparison controls.
 - [x] Exercise controls and review desktop/mobile rendering.
-- [ ] Capture the prototype branch and open its review PR.
+- [x] Capture the prototype branch and open its review PR.
 - [ ] Publish the comparison route privately and remove unused artifacts.
 - [ ] Owen chooses a direction; integrate it only after that choice.
