@@ -1,5 +1,6 @@
 import { readFile, writeFile, mkdir, cp, readdir, unlink, rmdir, lstat } from 'node:fs/promises';
 import path from 'node:path';
+import { renderPrototypes } from './prototypes.mjs';
 
 const root = path.resolve(import.meta.dirname, '..');
 process.chdir(root);
@@ -71,6 +72,7 @@ await cp('public', 'dist', { recursive: true });
 await writePage('', home());
 await writePage('wiki', wikiIndex());
 await writePage('submit', submitPage());
+await writePage('prototypes', renderPrototypes(projects, articles));
 for (const project of projects) await writePage(`projects/${project.slug}`, projectPage(project));
 for (const article of articles) await writePage(`wiki/${article.slug}`, articlePage(article));
 await writeFile('dist/404.html', shell('Page not found', `<div class="wrap section"><p class="eyebrow">404 · UNMAPPED TERRITORY</p><div class="page-heading"><h1>This page isn’t in the index.</h1><p class="lead">The link may have moved. Browse the projects or open the wiki to find your way.</p></div><div class="actions"><a class="button" href="/">Browse projects</a><a class="button secondary" href="/wiki/">Read the wiki</a></div></div>`));

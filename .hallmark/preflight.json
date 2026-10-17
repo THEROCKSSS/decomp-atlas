@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-17",
+  "scope": "homepage prototypes",
+  "framework": "native static HTML/CSS/JavaScript",
+  "existingFonts": ["Georgia", "Segoe UI", "Consolas"],
+  "existingMode": "dark",
+  "existingMotionLibraries": [],
+  "existingStyle": "serif feature and table-led catalogue",
+  "userDirection": "Reject the existing visual design; produce substantially different prototype styles",
+  "preserved": ["framework", "catalogue facts", "upstream credits", "working routes", "original homepage"],
+  "prototypeFonts": ["Space Grotesk", "Manrope", "Barlow Condensed", "JetBrains Mono"],
+  "note": "At most three type families are visible within one concept. No permanent design is locked."
+}

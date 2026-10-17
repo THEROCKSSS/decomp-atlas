@@ -6,6 +6,8 @@ A community field guide to decompilation projects, by [Owen](https://github.com/
 
 The first version includes searchable and platform-filtered listings, dedicated project pages, a ticket composer that opens GitHub for review, and four wiki guides. Tickets are submitted by the visitor on GitHub and reviewed before a listing is added.
 
+Three alternative homepage styles are available for review at `/prototypes/?variant=library`, `?variant=workbench`, and `?variant=index`. Use the floating comparison control to switch. They are prototypes on `prototype/decomp-atlas-styles`, pending Owen's choice; the original homepage is preserved. See [docs/PROTOTYPES.md](docs/PROTOTYPES.md).
+
 ## Featured projects and original credit
 
 | Project | Upstream maintainer / team | Canonical repository |
