@@ -9,7 +9,7 @@
 - Existing PR stack: #1 initial; draft #2 historical prototypes (preserve, not a merge prerequisite); #3 Library based on initial; #4 progress graphs based on Library. New feature PR must base codex/progress-graphs. Leave all merging to Owen.
 
 ## Current state
-The homepage matching/remaining summaries and shareable treemap are implemented and verified locally, at source commit 8394f189589c38811ee8c8c7c52921bc5cb115fa, pushed to GitHub. Previous Site version 4 serves source 14fa5950a38868704d4cd3196270a30709862701. PR #5 is open at https://github.com/THEROCKSSS/decomp-atlas/pull/5, based on codex/progress-graphs. Private publication remains. Library and the accepted matching-versus-ALL-remaining definition stay settled. GitHub is the sole tracker; no new interview is needed.
+The homepage matching/remaining summaries and shareable treemap are implemented and published privately as Site version 5. Published source is b19cb9a4dbfa8cb9068c83c4f45564b0e2e52840; feature assets were committed in 8394f189589c38811ee8c8c7c52921bc5cb115fa. PR #5 is open at https://github.com/THEROCKSSS/decomp-atlas/pull/5, based on codex/progress-graphs; implementation and delivery-preparation CI passed. This final delivery-record commit changes documentation only. Library and the accepted matching-versus-ALL-remaining definition stay settled. GitHub is the sole tracker; no new interview is needed.
 
 ## What was done
 - Homepage cards fetch compact overview feeds independently and display exact code-byte matching/remaining percentages, dates, historical labels and useful unavailable states. Their project/export links are separate accessible targets.
@@ -24,9 +24,9 @@ The homepage matching/remaining summaries and shareable treemap are implemented 
 - [x] Inspect reference image, accepted decisions, memory and real report.
 - [x] Implement validated summaries, map and standalone exports.
 - [x] Exercise build/tests, browsers, failure states and independent reviews.
-- [x] Commit/push and open PR #5; CI is running.
-- [ ] Publish exact source privately; verify hosted cards, map and downloads.
-- [ ] Record delivery IDs/source; stop owned preview/browser and inspect artifacts.
+- [x] Commit/push and open PR #5; CI passed.
+- [x] Publish exact source privately; verify hosted cards, map, SVG/PNG actions and successful Markdown copy.
+- [x] Record delivery IDs/source; stop owned preview/browser and inspect artifacts.
 
 ## How to resume
 1. Run npm run build, npm run check, npm test, then npm run dev.
@@ -44,7 +44,14 @@ The homepage matching/remaining summaries and shareable treemap are implemented 
 ## Known limits
 - Both connected reports are historical: Sims June 10, 2026, Zelda August 15, 2024. LIVE DATA means current retrieval, not current measurement. Exports are NON-LIVE DATA snapshots.
 - Treemap export currently supports the connected decomp.dev Sims provider. Other projects keep summary/no-report states. decomp.dev is being sunset; no unverified ByteMatch migration.
-- Tests are feature validation, not an accessibility/security certification or every possible upstream response. Hosted behavior remains pending this feature's publication.
+- Tests are feature validation, not an accessibility/security certification or every possible upstream response. Representative hosted card, map and export flows passed.
 - Session retrospective explicitly declined; do not ask again.
 
 Source-helper first save stopped safely because HANDOFF.md changed during saving. Commit the delivery-preparation record before retrying source synchronization; do not edit tracked files during that operation.
+
+## Delivery record
+- Native private deployment succeeded: appgdep_6ad341876ee88191bf9cbface8cdcbb7. Saved version appgprj_6ad31e6fc4e881918feeed6c3e474d0c~appgver_daa8a9497b8881918aa6f97ebfe907af; readback confirms version 5 and exact source b19cb9a4dbfa8cb9068c83c4f45564b0e2e52840.
+- Authenticated IAB confirmed hosted Sims 16.36%/83.64%, Zelda 100%/0%, historical source dates, homepage export navigation, 691-unit map, target/commit, standalone-image buttons and PNG/SVG Markdown switching. Copy Markdown reported success. Deliverable tab remains open on the map.
+- Known Windows WSL path packaging error recurred after source push. Official Node static preparation plus native tar produced inspected assets-only archive; source helper opening verified exact remote SHA. No plugin changes. Archive output/treemap/site.tar.gz is 2,650,119 bytes, SHA256 8D2467963A0C55790B86818BE1BBE83BFD9E41F0733965D296606D0BD2F1B7CF; kept for publication provenance. No full reports or test fixtures are bundled.
+- New package staging and temporary PR body were removed; deletion readback confirmed. Actual SVG/PNG exports and browser screenshots are retained as requested deliverables/evidence (about 2.3 MiB excluding archive). Older ignored artifacts from prior sessions remain untouched after their recorded cleanup rejection. Current local test browser and owned preview server stopped.
+- CI evidence for delivered source: https://github.com/THEROCKSSS/decomp-atlas/actions/runs/39021673808/job/117364565967 . Do not self-merge PR #5 or change audience. All requested feature work is complete.
