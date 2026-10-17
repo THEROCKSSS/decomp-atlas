@@ -33,4 +33,6 @@ The original three concepts remain on `prototype/decomp-atlas-styles` and draft 
 
 ## Review
 
+Homepage progress stays below each card's artwork, title and creator credit. Connected cards show matching/remaining code bytes with exact-count tooltips, source dates and historical status. The project link and Code map & export link are separate touch/keyboard targets. Treemap previews use a 2:1 map area, exact-match colors, a unit readout and roving keyboard focus. SVG/PNG downloads add a visible credit/date/source caption; reduced motion disables the brief reveal animations.
+
 Rendered review covered desktop, tablet, and phone layouts, all normal route families, empty results, submission validation and preview, guide anchors and command copying. See `docs/VERIFICATION.md` for actual evidence and limits.

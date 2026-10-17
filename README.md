@@ -45,6 +45,8 @@ The Sims 2 listing links to both [its decomp.dev board](https://decomp.dev/nateb
 
 The progress-board wiki uses the [official integration guide](https://decomp.wiki/tools/decomp-dev), [objdiff measurement schema](https://github.com/encounter/objdiff/blob/main/objdiff-core/protos/report.proto), and [decomp.dev GitHub App](https://github.com/apps/decomp-dev). A board describes code comparisons; available contribution tasks and claims remain with each upstream project.
 
+Homepage cards also show matching and remaining code bytes. The Sims 2 project offers a wide code-unit treemap with standalone SVG/PNG downloads and GitHub Markdown. Exports retain creator credit, report date and snapshot labels. See [docs/TREEMAP.md](docs/TREEMAP.md) for the source and export contract.
+
 ## Deployment and next steps
 
 `.openai/hosting.json` identifies the existing Site and its static `dist/` output. Use the Sites source and packaging workflow to publish that exact committed source. Keep temporary hosting credentials out of files and history.
