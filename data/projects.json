@@ -1,0 +1,75 @@
+[
+  {
+    "slug": "sims2",
+    "title": "The Sims 2",
+    "repositoryName": "Sims2DECOMP",
+    "owner": "natebag",
+    "platform": "GameCube",
+    "language": "C++",
+    "summary": "A matching decompilation of The Sims 2 for GameCube. Follow the work of reconstructing the game's original executable as readable C++.",
+    "repository": "https://github.com/natebag/Sims2DECOMP",
+    "contributing": "https://natebag.github.io/Sims2DECOMP/contributing/",
+    "board": "https://decomp.dev/natebag/Sims2DECOMP",
+    "boardStatus": "disabled",
+    "boardNote": "The linked decomp.dev page reported that this project was disabled when checked on October 17, 2026. Its displayed percentages may be stale. Check the repository for current status.",
+    "units": [
+      {
+        "name": "targets_s2c",
+        "url": "https://decomp.dev/natebag/Sims2DECOMP?unit=targets_s2c"
+      }
+    ],
+    "note": "The upstream README distinguishes a byte-identical linked DOL from fully reconstructed source. Some bytes can still come from the original binary; a successful build alone does not measure handwritten C++ coverage.",
+    "checkedOn": "2026-10-17"
+  },
+  {
+    "slug": "ocarina-of-time",
+    "title": "Ocarina of Time",
+    "repositoryName": "oot",
+    "owner": "zeldaret",
+    "platform": "Nintendo 64",
+    "language": "C",
+    "summary": "A decompilation of The Legend of Zelda: Ocarina of Time. Read the current project guidance for contributing, documentation, and community support.",
+    "repository": "https://github.com/zeldaret/oot",
+    "contributing": "https://github.com/zeldaret/oot#contributing",
+    "board": "https://zelda.deco.mp/games/oot",
+    "boardStatus": "external",
+    "boardNote": "Progress is maintained by the upstream project on its own dashboard. Open that dashboard for current measurements.",
+    "units": [],
+    "note": "Follow the upstream version and toolchain instructions before choosing a function. A tutorial or documentation improvement can also be a useful contribution.",
+    "checkedOn": "2026-10-17"
+  },
+  {
+    "slug": "super-mario-64",
+    "title": "Super Mario 64",
+    "repositoryName": "sm64",
+    "owner": "n64decomp",
+    "platform": "Nintendo 64",
+    "language": "C",
+    "summary": "The Super Mario 64 decompilation project. Its README describes completed decompilation, with naming and documentation work still welcome.",
+    "repository": "https://github.com/n64decomp/sm64",
+    "contributing": "https://github.com/n64decomp/sm64#contributing",
+    "board": null,
+    "boardStatus": "none",
+    "boardNote": "No separate progress board is listed here. The repository's contribution guidance describes its remaining work.",
+    "units": [],
+    "note": "A completed decompilation can still need better names, documentation, and understanding. Read the current contribution rules before opening a pull request.",
+    "checkedOn": "2026-10-17"
+  },
+  {
+    "slug": "pokemon-emerald",
+    "title": "Pokémon Emerald",
+    "repositoryName": "pokeemerald",
+    "owner": "pret",
+    "platform": "Game Boy Advance",
+    "language": "C",
+    "summary": "The Pokémon Emerald decompilation project from pret. Start with the installation guide, then follow the repository's pull request checklist.",
+    "repository": "https://github.com/pret/pokeemerald",
+    "contributing": "https://github.com/pret/pokeemerald/blob/master/INSTALL.md",
+    "board": null,
+    "boardStatus": "none",
+    "boardNote": "No separate progress board is listed here. The upstream repository is the source for setup and contribution requirements.",
+    "units": [],
+    "note": "Use the upstream installation guide for the current toolchain. Review its pull request template before submitting a change.",
+    "checkedOn": "2026-10-17"
+  }
+]
