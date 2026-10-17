@@ -1,0 +1,6 @@
+[
+  {"date":"2026-10-17","scope":"sitewide rollout","variant":"library","macrostructure":"Ecosystem Index with dedicated project and field-guide routes","theme":"Midnight","nav":"Edge rail","footer":"Inline","enrichment":"original artwork and persistent creator credit","brief":"Owen selected A; apply Library across all normal routes","acceptance":"Explicit user selection; browser checks recorded in docs/VERIFICATION.md"},
+  {"date":"2026-10-17","scope":"prototype","variant":"index","macrostructure":"Index-First","theme":"Sport-dark","nav":"Masthead","footer":"Statement","enrichment":"small original project artwork","brief":"Bold typographic project index; no card grid"},
+  {"date":"2026-10-17","scope":"prototype","variant":"workbench","macrostructure":"Map / Diagram","theme":"Cobalt-dark","nav":"Side rail","footer":"Dense colophon","enrichment":"interactive illustrative unit map","brief":"Repository workspace and source-status context"},
+  {"date":"2026-10-17","scope":"prototype","variant":"library","macrostructure":"Ecosystem Index","theme":"Midnight","nav":"Edge rail","footer":"Inline single line","enrichment":"original house cutaway artwork","brief":"Image-led discovery and credited repository collection"}
+]

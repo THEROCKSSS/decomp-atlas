@@ -6,6 +6,8 @@ A community field guide to decompilation projects, by [Owen](https://github.com/
 
 The first version includes searchable and platform-filtered listings, dedicated project pages, a ticket composer that opens GitHub for review, and four wiki guides. Tickets are submitted by the visitor on GitHub and reviewed before a listing is added.
 
+Owen selected the **Library** design. Its dark violet palette, self-hosted typography, artwork, navigation, and controls now run across the catalogue, project pages, wiki, submission flow, and 404 page. See [design.md](design.md). The original three concepts remain on `prototype/decomp-atlas-styles`; old `/prototypes/` URLs continue to the catalogue with search and platform filters retained.
+
 ## Featured projects and original credit
 
 | Project | Upstream maintainer / team | Canonical repository |
@@ -15,7 +17,7 @@ The first version includes searchable and platform-filtered listings, dedicated 
 | Super Mario 64 | n64decomp & contributors | [sm64](https://github.com/n64decomp/sm64) |
 | Pokémon Emerald | pret & contributors | [pokeemerald](https://github.com/pret/pokeemerald) |
 
-Atlas showcases these projects. Their original teams retain credit, ownership, and their own licensing terms; a listing does not imply endorsement. The site illustration is original vector artwork; this repository contains no game binaries or extracted game assets.
+Atlas showcases these projects. Their original teams retain credit, ownership, and their own licensing terms; a listing does not imply endorsement. Site artwork includes an original generated house illustration and original SVG scenes; this repository contains no game binaries or extracted game assets. Font license notices are included beside the self-hosted files.
 
 ## Run locally
 
@@ -31,7 +33,7 @@ Open http://127.0.0.1:8798. Set `PORT` to change the preview port. The server li
 
 ## Contribute
 
-Open a submission or correction issue, or fork this repository and send a focused pull request. Project records live in `data/projects.json`; sourced wiki guides live in `data/wiki.json`. See [CONTRIBUTING.md](CONTRIBUTING.md) for the fields and validation workflow. Interface source lives in `public/assets/` and `scripts/build.mjs`.
+Open a submission or correction issue, or fork this repository and send a focused pull request. Project records live in `data/projects.json`; sourced wiki guides live in `data/wiki.json`. See [CONTRIBUTING.md](CONTRIBUTING.md) for the fields and validation workflow. Interface source lives in `public/assets/` and `scripts/site.mjs`; `scripts/build.mjs` generates dedicated static routes.
 
 GitHub is this project's contribution tracker. Source changes go through pull requests. The existing Site deployment stays private until Owen chooses a public audience.
 

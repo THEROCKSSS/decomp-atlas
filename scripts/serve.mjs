@@ -4,7 +4,7 @@ import path from 'node:path';
 
 const root = path.resolve(import.meta.dirname, '../dist');
 const port = Number(process.env.PORT || 8798);
-const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml' };
+const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml', '.png': 'image/png', '.ttf': 'font/ttf' };
 const headers = {
   'Content-Security-Policy': "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
   'X-Content-Type-Options': 'nosniff',
@@ -21,7 +21,15 @@ createServer(async (request, response) => {
     response.writeHead(200, { ...headers, 'Content-Type': types[path.extname(filename)] || 'application/octet-stream' });
     response.end(data);
   } catch {
+    // A rebuild briefly removes generated pages. Keep preview alive while it runs.
+    let fallback;
+    try { fallback = await readFile(path.join(root, '404.html')); }
+    catch {
+      response.writeHead(503, { ...headers, 'Content-Type': 'text/plain; charset=utf-8', 'Retry-After': '1' });
+      response.end('The preview is rebuilding. Reload in a moment.');
+      return;
+    }
     response.writeHead(404, { ...headers, 'Content-Type': 'text/html; charset=utf-8' });
-    response.end(await readFile(path.join(root, '404.html')));
+    response.end(fallback);
   }
 }).listen(port, '127.0.0.1', () => console.log(`Decomp Atlas: http://127.0.0.1:${port}`));
